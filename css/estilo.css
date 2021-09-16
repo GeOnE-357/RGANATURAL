@@ -41,6 +41,14 @@ nav
 		align-items: center;
 	}
 
+a.volver
+	{
+		display: flex;
+		flex-direction: row;
+		max-width: 200px;
+		justify-content: space-between;
+		align-items: center;
+	}
 
 section.principal
 	{
@@ -50,6 +58,11 @@ section.principal
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+	}
+
+section.principal.sub
+	{
+		flex-direction: row;
 	}
 
 div.centrado, div.botones
@@ -85,15 +98,84 @@ div.botones > a > p , div.centrado > div > p
 		transition: all 1s;
 	}
 
-div.botones > a:hover, div.centrado > div:hover
+div.botones > a:hover, div.centrado > div:hover, div.centrado > div.select
 	{
 		background-color:rgba(255, 255, 255, 0.5);
 		transform: scale(1.2);
 	}
 
-div.botones > a:hover > p , div.centrado > div:hover > p
+div.botones > a:hover > p , div.centrado > div:hover > p, , div.centrado > div.select > p
 	{
 		opacity: 1;
+	}
+
+div.selecciones
+	{
+		display: flex;
+		max-width: 500px;
+		width: 100%;
+		flex-direction: column;
+	}
+
+div.cabecera-slider
+	{
+		border-bottom: 3px solid black ;
+		margin-bottom: 10px;
+	}
+
+h2#titulo-slider
+	{
+		text-align: right;
+		margin-right: 20px;
+	}
+
+div.slider
+	{
+		width: 100%;
+		display: inline-grid;
+		grid-template-columns: 50px 1fr 50px;
+		background-color: red;
+		border-radius: 40px;
+		height: 80px;
+	}
+
+div.boton
+	{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+div.boton > img
+	{
+		transition: all 1s;
+	}
+
+div.boton:hover > img
+	{
+		transform: scale(1.4);
+	}
+
+div#contenido-slider
+	{
+		display: flex;
+		overflow: hidden;
+		flex-direction: row;
+		align-items: center;
+	}
+
+div.slide > img
+	{
+		max-width: 100px;
+		height: 60px;
+		margin: 5px;
+		transition: all 1s;
+	}
+
+div.slide:hover > img, div.slide.select > img
+	{
+		box-shadow: 0 0 5px 10px rgba(0, 0, 0, 0.3);
+		transform: scale(1.1);
 	}
 
 footer

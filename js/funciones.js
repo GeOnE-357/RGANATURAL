@@ -10,52 +10,59 @@ function principal()
 		];
 
 		const botonPopper = document.querySelector("#Popper");
-		botonPopper.addEventListener('click', buscarPuntaPopper);
+		botonPopper.addEventListener('click', buscarAves);
 		const botonLaguna = document.querySelector("#Laguna");
-		botonLaguna.addEventListener('click', buscarLagunaPatos);
+		botonLaguna.addEventListener('click', buscarAves);
 		const botonAtlantica = document.querySelector("#Atlantica");
-		botonAtlantica.addEventListener('click', buscarCostaAtlantica);
+		botonAtlantica.addEventListener('click', buscarAves);
 
-		function buscarPuntaPopper()
-			{
-				const principales = filtarPrincipales();
-				const puntaPopper = [] 
-				for (dato of principales)
-					{
-						if(dato.puntaPopper===true)
-							{
-								puntaPopper.push(dato);
-							}
-					}
-				console.log(puntaPopper);
-			}
+		const botones = [botonPopper, botonLaguna, botonAtlantica];
 
-		function buscarLagunaPatos()
+		function buscarAves()
 			{
+				unClick(botones);
+				this.classList.add("select")
 				const principales = filtarPrincipales();
-				const lagunaPatos = [] 
-				for (dato of principales)
-					{
-						if(dato.lagunaPatos===true)
-							{
-								lagunaPatos.push(dato);
-							}
-					}
-				console.log(lagunaPatos);
-			}
+				const elegidos = [];
+				let nombre ="";
 
-		function buscarCostaAtlantica()
-			{
-				const principales = filtarPrincipales();
-				const costaAtlantica = [] 
-				for (dato of principales)
+				if(this.id==="Popper")
 					{
-						if(dato.costaAtlantica===true)
+						for (dato of principales)
 							{
-								costaAtlantica.push(dato);
+								if(dato.puntaPopper===true)
+									{
+										elegidos.push(dato);
+									}
 							}
+						nombre="RNU Punta Popper";
 					}
-				console.log(costaAtlantica);
+
+				if(this.id==="Laguna")
+					{
+						for (dato of principales)
+							{
+								if(dato.lagunaPatos===true)
+									{
+										elegidos.push(dato);
+									}
+							}
+						nombre="RNU Laguna de los Patos";
+					}
+				 
+				if(this.id==="Atlantica")
+					{
+						for (dato of principales)
+							{
+								if(dato.costaAtlantica===true)
+									{
+										elegidos.push(dato);
+									}
+							}
+						nombre="Costa Atlantica";
+					}
+
+				crearSelecciones(nombre, elegidos);	
 			}
 
 		function filtarPrincipales()
@@ -64,29 +71,54 @@ function principal()
 				for (dato of db)
 					{
 						if(dato.principal===true)
-								{
-									principales.push(dato);	
-								}
+							{
+								principales.push(dato);	
+							}
 					}
-				return (principales);
+				return principales;
 			}
+
+		function crearSelecciones(nombre,aves)
+			{
+				const titulo = document.querySelector("#titulo-slider");
+				titulo.innerHTML=nombre;
+				const contenido = document.querySelector("#contenido-slider");
+				contenido.innerHTML="";
+				for(ave of aves)
+					{
+						const slide = document.createElement("div");
+						slide.classList.add("slide");
+						slide.setAttribute("id", ave.taxonomico);
+						slide.addEventListener("click",filtarTaxonomico);
+						const img = document.createElement("img");
+						img.setAttribute("src", ave.foto);
+						slide.appendChild(img);
+						contenido.appendChild(slide);
+					}
+			};
 
 		function filtarTaxonomico()
 			{
+				const contenido = document.querySelectorAll(".slide");
+				unClick(contenido);
+				this.classList.add("select");
 				const taxonomico = [];
 				for (dato of db)
 					{
 						if(dato.taxonomico===Number(this.id))
-								{
-									taxonomico.push(dato);	
-								}
+							{
+								taxonomico.push(dato);	
+							}
 					}
-				return (taxonomico);
+			};
+
+		function unClick(vector)
+			{
+				for(elemento of vector)
+					{
+						elemento.classList.remove("select");
+					}
 			}
-
-		//img.setAttribute("src", db[this.id].foto);
-		//document.querySelector('body').appendChild(img);
 	};
-
 
 principal();
