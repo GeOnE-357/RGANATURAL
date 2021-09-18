@@ -105,7 +105,9 @@ function principal()
 								taxonomico.push(dato);	
 							}
 					}
-				activarElementos("#detalle")
+
+				crearDetalle(taxonomico);
+				activarElementos("#detalle");
 			};
 
 		function crearSlides(nombre,aves)
@@ -140,7 +142,7 @@ function principal()
 
 		function crearDetalle(datos)
 			{
-
+				console.log(datos);
 			};
 
 		function unClick(vector)
