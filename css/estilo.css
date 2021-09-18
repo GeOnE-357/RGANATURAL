@@ -7,6 +7,11 @@
 		box-sizing: border-box;
 	}
 
+html
+{
+  scroll-behavior: smooth;
+}
+
 h1, h2
 	{
 		font-family: 'Lora';
@@ -60,6 +65,25 @@ section.principal
 		justify-content: center;
 	}
 
+section#detalle
+	{
+		width: 100%;
+		display: flex;
+		height:0;
+		overflow: hidden;
+		background-color: black;
+	}
+
+section#detalle.activo
+	{
+		height: 100vh;
+	}
+
+section#detalle > div.slider
+	{
+		margin: 20px;
+	}
+
 section.principal.sub
 	{
 		flex-direction: row;
@@ -104,7 +128,7 @@ div.botones > a:hover, div.centrado > div:hover, div.centrado > div.select
 		transform: scale(1.2);
 	}
 
-div.botones > a:hover > p , div.centrado > div:hover > p, , div.centrado > div.select > p
+div.botones > a:hover > p , div.centrado > div:hover > p, div.centrado > div.select > p
 	{
 		opacity: 1;
 	}
@@ -113,8 +137,15 @@ div.selecciones
 	{
 		display: flex;
 		max-width: 500px;
-		width: 100%;
+		width: 0;
+		overflow: hidden;
 		flex-direction: column;
+		transition: all 1.5s;
+	}
+
+div.selecciones.activo
+	{
+		width: 100%;
 	}
 
 div.cabecera-slider
@@ -136,7 +167,7 @@ div.slider
 		grid-template-columns: 50px 1fr 50px;
 		background-color: red;
 		border-radius: 40px;
-		height: 80px;
+		height: 65px;
 	}
 
 div.boton
@@ -156,7 +187,7 @@ div.boton:hover > img
 		transform: scale(1.4);
 	}
 
-div#contenido-slider
+div#contenido-slider, div#contenido-slider-2
 	{
 		display: flex;
 		overflow: hidden;
@@ -164,10 +195,17 @@ div#contenido-slider
 		align-items: center;
 	}
 
+div.slide
+	{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
 div.slide > img
 	{
-		max-width: 100px;
-		height: 60px;
+		height: calc(100% - 10px);
+		max-height: 55px;
 		margin: 5px;
 		transition: all 1s;
 	}
