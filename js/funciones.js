@@ -3,6 +3,7 @@ function principal()
 		const db = [
 				{"id":1, "taxonomico":351, "nombre":"Cauquén Común", "foto":"./img/01-351.jpg", "autor":"Jan van de Kam", "puntaPopper":true, "lagunaPatos":true, "costaAtlantica":false, "principal":true, "caracteristica1":"Migratoria", "caracteriscia2":"Macho"},
 				{"id":2, "taxonomico":351, "nombre":"Cauquén Común", "foto":"./img/02-351.jpg", "autor":"Jan van de Kam", "puntaPopper":true, "lagunaPatos":true, "costaAtlantica":false, "principal":false, "caracteristica1":"Migratoria", "caracteriscia2":"Hembra"},
+				{"id":2, "taxonomico":351, "nombre":"Cauquén Común", "foto":"./img/02-351.jpg", "autor":"Jan van de Kam", "puntaPopper":true, "lagunaPatos":true, "costaAtlantica":false, "principal":false, "caracteristica1":"Migratoria", "caracteriscia2":"Hembra"},
 				{"id":3, "taxonomico":352, "nombre":"Cauquén Común", "foto":"./img/01-351.jpg", "autor":"Jan van de Kam", "puntaPopper":false, "lagunaPatos":true, "costaAtlantica":false, "principal":true, "caracteristica1":"Migratoria", "caracteriscia2":"Macho"},
 				{"id":4, "taxonomico":352, "nombre":"Cauquén Común", "foto":"./img/02-351.jpg", "autor":"Jan van de Kam", "puntaPopper":false, "lagunaPatos":true, "costaAtlantica":false, "principal":false, "caracteristica1":"Migratoria", "caracteriscia2":"Hembra"},
 				{"id":5, "taxonomico":353, "nombre":"Cauquén Común", "foto":"./img/01-351.jpg", "autor":"Jan van de Kam", "puntaPopper":false, "lagunaPatos":true, "costaAtlantica":true, "principal":true, "caracteristica1":"Migratoria", "caracteriscia2":"Macho"},
@@ -105,9 +106,8 @@ function principal()
 								taxonomico.push(dato);	
 							}
 					}
-
-				crearDetalle(taxonomico);
 				activarElementos("#detalle");
+				crearDetalle(taxonomico);
 			};
 
 		function crearSlides(nombre,aves)
@@ -142,7 +142,55 @@ function principal()
 
 		function crearDetalle(datos)
 			{
-				console.log(datos);
+				const detalles = [document.querySelector(".detalle-principal"),document.querySelector(".detalle-secundario"),document.querySelector(".descripcion")];
+				const seccion = document.querySelector(".contenido-detalle")
+				
+				seccion.classList.remove("dos-fotos");
+				seccion.classList.remove("tres-fotos");
+				
+				for(detalle of detalles)
+					{
+						detalle.innerHTML="";
+					}
+
+				if(datos.length===2)
+					{
+						seccion.classList.add("dos-fotos");
+					}
+
+				if(datos.length===3)
+					{
+						seccion.classList.add("tres-fotos");
+					}
+
+				for (dato of datos)
+					{
+						const contenedor = document.createElement("div");
+						contenedor.classList.add("imagen");
+						const img = document.createElement("img");
+						img.setAttribute("src", dato.foto);
+						contenedor.appendChild(img);
+
+						if(dato.principal===true)
+							{		
+								detalles[0].appendChild(contenedor);
+
+								const cabecera = document.createElement("div");
+								cabecera.classList.add("cabecera-slide")
+								const titulo = document.createElement("h2");
+								titulo.innerHTML=dato.nombre;
+								cabecera.appendChild(titulo);
+								const texto = document.createElement("p");
+								texto.innerHTML=dato.caracteristica1;
+
+								detalles[2].appendChild(cabecera);
+								detalles[2].appendChild(texto);
+							}
+						else
+							{
+								detalles[1].appendChild(contenedor);
+							}
+					}
 			};
 
 		function unClick(vector)
@@ -160,8 +208,8 @@ function principal()
 				if(nombre === "#detalle")
 					{	
 						const activar = document.querySelector(nombre);
-						agregarSlides("#contenido-slider-2");
 						activar.scrollIntoView();
+						agregarSlides("#contenido-slider-2");
 						desactivarElementos(".selecciones");
 						unClick(botonMapa);
 					}
