@@ -58,9 +58,15 @@ nav
 		position: absolute;
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 	}
 
-a.volver
+nav > h3
+	{
+		color: #8f4754;	
+	}
+
+a.volver, a.siguiente
 	{
 		display: flex;
 		flex-direction: row;
@@ -69,11 +75,17 @@ a.volver
 		align-items: center;
 	}
 
+a.siguiente
+	{
+		justify-self: flex-end;
+	}
+
 div.back
 	{
 		position: absolute;
 		z-index: -1;
-		height: 100vh;
+		height: 100%;
+		min-height: 100vh;
 		width: 100%;
 		overflow: hidden;
 	}
@@ -90,6 +102,17 @@ div.back img
 		min-width: 100%;
 	}
 
+section.aves
+	{
+		width: 100%;
+		min-height: 100vh;
+		padding-top: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-image: url("../img/back/02-prin.png");
+		background-size: cover;
+	}
 
 section.principal
 	{
@@ -247,9 +270,10 @@ div.botones > a > h3
 div.selecciones
 	{
 		display: none;
-		max-width: 500px;
+		max-width: 600px;
 		width: 0;
-		overflow: hidden;
+		margin: auto;
+		/*overflow: hidden;*/
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
@@ -275,7 +299,7 @@ h2#titulo-slider
 		font-size: 1.5em;
 	}
 
-div.slider
+div.slider, div.grilla
 	{
 		width: calc(100% - 40px);
 		max-width: 900px;
@@ -335,6 +359,27 @@ div.slide:hover > img, div.slide.select > img
 		transform: scale(1.1);
 	}
 
+div.grilla
+	{
+		grid-template-columns: 1fr;
+		background-color: rgba(255,255,255,0);
+		align-self: center;
+		box-shadow: none;
+		height: 90%;
+	}
+
+div.grilla > div#contenido-slider
+	{
+		overflow: none;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+
+div.grilla > div#contenido-slider > div.slide > img
+	{
+			max-height: 85px;		
+	}
+
 section#detalle
 	{
 		width: 100%;
@@ -369,6 +414,11 @@ div.contenido-detalle
 		grid-template-rows: none;
 		grid-auto-columns: 1fr;
 		grid-gap: 10px;
+	}
+
+div.contenido-detalle.aves
+	{
+		margin: 20px 20px 0 20px;
 	}
 
 div.contenido-detalle > div.detalle-secundario
@@ -417,10 +467,17 @@ div.imagen
 		overflow: hidden;
 	}
 
+div.imagen > p
+	{
+		left: 20px;
+		padding: 5px;
+		position: relative;
+		color: #8f4754;
+	}
+
 div.imagen > img
 	{
 		width: 100%;
-		position: relative;
 	}
 
 div.contenido-detalle.dos-fotos div.imagen
@@ -493,6 +550,11 @@ footer > div.centrado > img
 			{
 				grid-template-rows: 1fr 180px;
 				grid-gap: 20px;
+			}
+
+		div.contenido-detalle.aves
+			{
+				margin: 40px 20px 0 20px;
 			}
 
 		div.contenido-detalle.dos-fotos

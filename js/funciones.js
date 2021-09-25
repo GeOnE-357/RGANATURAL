@@ -64,16 +64,34 @@ function principal()
 		
 		for(boton of botonMapa)
 			{
-				boton.addEventListener('click', buscarAves);
+				if(boton!==null)
+					{
+						boton.addEventListener('click', buscarAves);		
+					}
+				
 			}
 
 		const botonSlider = document.querySelectorAll(".boton");
 		for(boton of botonSlider)
 			{
-				boton.addEventListener('click', moverSlider);
+				if(boton!==null)
+					{
+						boton.addEventListener('click', moverSlider);		
+					}
+				
 			}
 
 		const slides = []
+
+		const tituloAves = document.querySelector("#aves");
+
+		if(tituloAves!==null)
+			{
+				const principales = filtarPrincipales();
+				console.log(principales);
+				crearSlides(null, principales);
+				activarElementos(".selecciones");
+			}
 
 		function buscarAves()
 			{
@@ -121,7 +139,7 @@ function principal()
 
 				crearSlides(nombre, elegidos);
 				activarElementos(".selecciones");
-				desactivarElementos("#detalle")	
+				desactivarElementos("#detalle");
 			}
 
 		function filtarPrincipales()
@@ -156,8 +174,12 @@ function principal()
 
 		function crearSlides(nombre,aves)
 			{
-				const titulo = document.querySelector("#titulo-slider");
-				titulo.innerHTML=nombre;
+				if(nombre!==null)
+					{
+						const titulo = document.querySelector("#titulo-slider");
+						titulo.innerHTML=nombre;						
+					}
+
 				slides.length = 0
 				for(ave of aves)
 					{
@@ -211,6 +233,9 @@ function principal()
 					{
 						const contenedor = document.createElement("div");
 						contenedor.classList.add("imagen");
+						const fotografo = document.createElement("p");
+						fotografo.innerHTML=dato.autor;
+						contenedor.appendChild(fotografo);
 						const img = document.createElement("img");
 						img.setAttribute("src", dato.foto);
 						contenedor.appendChild(img);
@@ -253,9 +278,13 @@ function principal()
 					{	
 						const activar = document.querySelector(nombre);
 						activar.scrollIntoView();
-						agregarSlides("#contenido-slider-2");
-						desactivarElementos(".selecciones");
-						unClick(botonMapa);
+						if(tituloAves===null)
+							{
+								agregarSlides("#contenido-slider-2");
+								desactivarElementos(".selecciones");
+								unClick(botonMapa);								
+							}
+
 					}
 			}
 
