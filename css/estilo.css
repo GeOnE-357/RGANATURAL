@@ -465,14 +465,17 @@ div.imagen
 		height: 100%;
 		max-height: 230px;
 		overflow: hidden;
+		display: grid;
+		grid-template-rows: 205px 30px;
 	}
 
 div.imagen > p
 	{
-		left: 20px;
-		padding: 5px;
-		position: relative;
+		padding: 5px 30px;
 		color: #8f4754;
+		background-color: rgba(255, 255, 255, 0.65);
+		text-align: right;
+		align-self: center;
 	}
 
 div.imagen > img
@@ -490,6 +493,27 @@ div.descripcion
 		align-self: flex-start;
 		color: white;
 		padding-bottom: 20px;
+	}
+
+div.ubicaciones
+	{
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+p.zona
+	{
+		padding: 5px 10px;
+		margin: 2px 4px;
+		display: inline;
+		background-color: white;
+		border-radius: 8px;
+		color: #8f4754;
+		max-width: 170px;
+		font-size: 0.8em;
+		text-align: center;
 	}
 
 footer
@@ -577,5 +601,12 @@ footer > div.centrado > img
 		div.imagen, div.contenido-detalle.dos-fotos div.imagen
 			{
 				max-height: 300px;
+				grid-template-rows: 271px 30px;
+			}
+
+		div.contenido-detalle.tres-fotos > div.detalle-secundario > div.imagen
+			{
+				max-height: 280px;
+			  grid-template-rows: 215px 30px;	
 			}
 	}

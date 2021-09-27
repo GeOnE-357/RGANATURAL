@@ -233,12 +233,13 @@ function principal()
 					{
 						const contenedor = document.createElement("div");
 						contenedor.classList.add("imagen");
-						const fotografo = document.createElement("p");
-						fotografo.innerHTML=dato.autor;
-						contenedor.appendChild(fotografo);
 						const img = document.createElement("img");
 						img.setAttribute("src", dato.foto);
 						contenedor.appendChild(img);
+						const fotografo = document.createElement("p");
+						fotografo.innerHTML="<b>foto: </b>"+dato.autor;
+						contenedor.appendChild(fotografo);
+						
 
 						if(dato.principal===true)
 							{		
@@ -249,11 +250,43 @@ function principal()
 								const titulo = document.createElement("h2");
 								titulo.innerHTML=dato.nombre;
 								cabecera.appendChild(titulo);
+								
+								const ubicacion = document.createElement("div");
+								ubicacion.classList.add("ubicaciones");
 								const texto = document.createElement("p");
-								texto.innerHTML=dato.caracteristica1;
+								texto.innerHTML="Zonas:";
+								ubicacion.appendChild(texto);
+
+								if(dato.lagunaPatos===true)
+									{
+										const zona = document.createElement("p");
+										zona.classList.add("zona");
+										zona.innerHTML="RNU Laguna de los Patos";
+										ubicacion.appendChild(zona);
+									}
+
+								if(dato.puntaPopper===true)
+									{
+										const zona = document.createElement("p");
+										zona.classList.add("zona");
+										zona.innerHTML="RNU Punta Popper";
+										ubicacion.appendChild(zona);
+									}
+								
+								if(dato.costaAtlantica===true)
+									{
+										const zona = document.createElement("p");
+										zona.classList.add("zona");
+										zona.innerHTML="Costa Atlantica";
+										ubicacion.appendChild(zona);
+									}
+
+								const caracteristica = document.createElement("p");
+								caracteristica.innerHTML="Caracteristica: "+dato.caracteristica1;
 
 								detalles[2].appendChild(cabecera);
-								detalles[2].appendChild(texto);
+								detalles[2].appendChild(ubicacion);
+								detalles[2].appendChild(caracteristica);
 							}
 						else
 							{
