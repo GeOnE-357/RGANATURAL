@@ -31,7 +31,7 @@ function principal()
 				{"id":30, "taxonomico":5845, "nombre":"Playero Rojizo", "foto":"./img/data/30-5845.jpg", "autor":"Alejandro Nieto", "puntaPopper":true, "lagunaPatos":false, "costaAtlantica":true, "principal":false, "caracteristica1":"Migratoria", "caracteriscia2":""},
 				{"id":31, "taxonomico":5893, "nombre":"Playerito Rabadilla Blanca", "foto":"./img/data/31-5893.jpg", "autor":"Alejandro Nieto", "puntaPopper":true, "lagunaPatos":true, "costaAtlantica":true, "principal":false, "caracteristica1":"Migratoria", "caracteriscia2":""},
 				{"id":32, "taxonomico":5893, "nombre":"Playerito Rabadilla Blanca", "foto":"./img/data/32-5893.jpg", "autor":"Jan van de Kam", "puntaPopper":true, "lagunaPatos":true, "costaAtlantica":true, "principal":true, "caracteristica1":"Migratoria", "caracteriscia2":""},
-				{"id":33, "taxonomico":6233, "nombre":"Gaviota Gris", "foto":"./img/data/33-6233.jpg", "autor":"Alejandro Nieto", "puntaPopper":true, "lagunaPatos":false, "costaAtlantica":true, "principal":false, "caracteristica1":"Residente", "caracteriscia2":""},
+				{"id":33, "taxonomico":6233, "nombre":"Gaviota Gris", "foto":"./img/data/33-6233.jpg", "autor":"Alejandro Nieto", "puntaPopper":true, "lagunaPatos":false, "costaAtlantica":true, "principal":true, "caracteristica1":"Residente", "caracteriscia2":""},
 				{"id":34, "taxonomico":6233, "nombre":"Gaviota Gris", "foto":"./img/data/34-6233.jpg", "autor":"Alejandro Nieto", "puntaPopper":true, "lagunaPatos":false, "costaAtlantica":true, "principal":false, "caracteristica1":"Residente", "caracteriscia2":""},
 				{"id":35, "taxonomico":6333, "nombre":"Gaviota Cocinera", "foto":"./img/data/35-6333.jpg", "autor":"Alejandro Nieto", "puntaPopper":true, "lagunaPatos":true, "costaAtlantica":true, "principal":true, "caracteristica1":"Residente", "caracteriscia2":""},
 				{"id":36, "taxonomico":6333, "nombre":"Gaviota Cocinera", "foto":"./img/data/36-6333.jpg", "autor":"Juan Carlos Castillo", "puntaPopper":true, "lagunaPatos":true, "costaAtlantica":true, "principal":false, "caracteristica1":"Residente", "caracteriscia2":""},
@@ -134,7 +134,7 @@ function principal()
 										elegidos.push(dato);
 									}
 							}
-						nombre="Costa Atlantica";
+						nombre="Reserva Costa Atlántica";
 					}
 
 				crearSlides(nombre, elegidos);
@@ -277,7 +277,7 @@ function principal()
 									{
 										const zona = document.createElement("p");
 										zona.classList.add("zona");
-										zona.innerHTML="Costa Atlantica";
+										zona.innerHTML="Reserva Costa Atlántica";
 										ubicacion.appendChild(zona);
 									}
 
