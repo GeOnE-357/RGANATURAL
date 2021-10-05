@@ -530,7 +530,7 @@ footer
 	{
 		width: 100%;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		flex-wrap: wrap;
 		justify-content: center;
 		background-color: white;
@@ -542,11 +542,30 @@ footer > div.centrado
 		max-width: 500px;
 		color: #8f4754;
 		font-weight: 400;
+		margin: auto;
 	}
 
 footer > div.centrado > img
 	{
 		width: 100%;
+	}
+
+footer > div.estepa
+	{
+		flex-direction: column;
+		align-items: center;
+	}
+
+footer > div.estepa > a > img
+	{
+		margin-bottom: 15px;
+		margin: 0 0 15px 0;
+		max-width: 50px;
+	}
+
+footer > div.estepa > p
+	{
+		text-align: justify;
 	}
 
 @media screen and (min-width: 700px)
@@ -618,5 +637,16 @@ footer > div.centrado > img
 			{
 				max-height: 280px;
 			  grid-template-rows: 215px 30px;	
+			}
+
+		footer > div.estepa
+			{
+				flex-direction: row;
+				align-items: center;
+			}
+
+		footer > div.estepa > a > img
+			{
+				margin: 0 15px 0 0;
 			}
 	}
