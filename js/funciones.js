@@ -88,7 +88,6 @@ function principal()
 		if(tituloAves!==null)
 			{
 				const principales = filtarPrincipales();
-				console.log(principales);
 				crearSlides(null, principales);
 				activarElementos(".selecciones");
 			}
